@@ -1,0 +1,237 @@
+Company Name: Techstars
+
+Project Name: Meetup App Test Plan
+
+Version: V1.0
+
+Prepared by Vanitha Dorairaj, Test lead
+
+Revision History
+S/No |  Date  | version no | List of Changes (Initial/ Added /Modified/ Deleted ) | Brief Description of the Change
+1.   |  8/7   |  V1.0      |    Meetup and registration page                      |  Testing the first version of the functionality
+
+1. Introduction
+      The Software Test Plan is designed to test the functionality for the Meetup App.
+      This app will be used by Admins to create and manage Meetups.
+      The objective of the test plan is to identify scope, approach, Functionality/ Features to be tested, resources, schedule,
+      testers responsible, risks and change management required for  complete testing cycle.
+
+2. Scope
+      Testing will be performed to test the first version of the functionality for the Meetup App
+      Testing will be performed to test creation and manage the App by the Admins
+      Testing will be performed to test the UI page accessed by Users
+      Additional testing will be performed as the product is constructed or changes are made
+      Test plan will include test cases for Registration Page Access
+
+   Reference
+      Please refer to instructions provided in Quality Assurance Engineer Code Challenge.
+
+3. Approach
+
+      Static Testing : Documentation will be reviewed formally with the entire team and a review report will be prepared to ensure that it is correct and complete.
+      White-Box Testing : Unit testing and Integration testing will be done by developers
+      Black-Box Testing : System testing and UAT will be done by the testers
+      Testing will include Cross browser testing, browser compatibility testing, performance testing, mobile app testing
+
+
+4. Functionality /Features to be Tested
+Features/functionality will be tested as per the requirements
+Test Data  will be prepared for Equivalence class partition (Valid/Invalid)
+and Boundary Value Analysis(Minimum/Maximum/Size)
+Bidirectional Requirement traceability will be maintained for adequate test coverage
+Data Accuracy will be tested
+
+The features to be tested within Meetup App are classified under the following functionality modules:
+
+  Module 1: The page should look for the Registration Code in the query string. I.e. RegistrationPage?code=12345
+
+  Input Field                             Type                            Test coverage
+ 1. Registration_Code                     Text                            Check for auto-generation upon creation
+                                                                          Check for Valid characters - Alphanumeric only
+                                                                          Check for Size - 8 chars
+                                                                          Check for Invalid Characters
+                                                                          Check for Random generation
+
+ 2. TestCase Scenarios                                                    Check for Page opened successfully upon user entry of registration Code
+                                                                          Check for Valid registration Code in query string
+                                                                          Check for Error Message upon user entry of wrong registration code
+
+
+  Module 2: The user can only register if the Meetup status is Open
+Input Field                              Type                           Test Coverage
+1. Status                                Values                         Check for values "Open", "Default", "closed"
+                                                                        Check other values to make sure it is not accepted
+
+2. Testcase Scenarios                                                   Check to allow new registrations when status = "Open"
+                                                                        Check to not allow new registration when status = "closed"
+                                                                        Check to not allow new registration when status = "Default"
+
+
+  Module 3:The user cannot register when the total # of registrations exceed the registration limit for this Meetup.
+
+Input Field                              Type                          Test Coverage
+
+1.Registration_Limit                      Number	                      Check for Required field input from Admin
+                                                                        Check for valid number
+                                                                        Check for invalid number
+                                                                        Check for minimum range of Values
+                                                                        Check for maximum range of Values
+2.Total_Registered                        Number	                      Check for Valid number
+                                                                        Check for minimum range of values
+                                                                        Check for maximum range of values
+
+
+3.TestCase Scenarios                                                    Check for User registration not allowed when Total_Registered > Registration_Limit
+                                                                        Check for User registration allowed when Total_Registered < Registration_Limit
+
+
+  Module 4: There will be inputs for first name, last name and email. These fields are required.
+
+  Input Fields                          Type                             Test Coverage
+1.Email                                email                              Check for Validity
+                                                                          Check for Required field input from User
+
+2.First_Name                           Text                               Check for valid char
+                                                                          Check for invalid chars
+                                                                          Check for minimum range of Values(5)
+                                                                          Check for maximum range of Values(40)
+                                                                          Check for Required field input from User
+
+3.Last_Name                            Text                               Check for valid char
+                                                                          Check for invalid chars
+                                                                          Check for minimum range of Values(5)
+                                                                          Check for maximum range of Values(80)
+                                                                          Check for Required field input from User
+
+  Module 5: Each email must be unique per Meetup
+  Input Fields                          Type                              Test Coverage
+  1. Email                              email                             Check for Validity
+                                                                          Check for Required field input from User
+                                                                          Check for unique ID input from User
+
+  Module 6: Registration page will be accessed by external users with their Registration Code
+  Input Field                             Type                            Test coverage
+ 1. Registration_Code                     Text                            Check for auto-generation upon creation
+                                                                          Check for Valid characters - Alphanumeric only
+                                                                          Check for Size - 8 chars
+                                                                          Check for Invalid Characters
+                                                                          Check for Random generation
+
+2. Test Case Scenarios                                                    Check for Page opened successfully upon user entry of registration Code
+                                                                          Check for Valid registration Code in query string
+                                                                          Check for Error Message upon user entry of wrong registration code
+
+ Module 7: Test Admin Page
+
+Fields                                   Type                              Test Coverage
+1. Name                                  Text                           Check for valid char [a-z]
+                                                                        Check for invalid char
+                                                                        Check for boundary values
+2. Owner                                 Text                           Check for valid char [a-z]
+                                                                        Check for invalid char
+                                                                        Check for boundary values
+3. Status                                Values                         Check for values "Open", "Default", "closed"
+                                                                        Check to allow new registrations when status = "Open"
+4. Registration_Code                     Text                           Check for valid chars
+                                                                        Check for invalid chars
+                                                                        Check for alphanumeric
+                                                                        check for size (8 char only)
+                                                                        Check for auto-generated Code
+                                                                        Check  for random generation of code
+                                                                        Check for duplication
+5. Registration_Limit                   Number                          Check for valid number
+                                                                        Check for invalid number
+                                                                        Check for boundary values[Min -Max] [ per user specification]
+                                                                        Check for max number of registrations
+6. Total_Registered                     Number                          Check for valid number [Min - Max][per user specification]
+                                                                        Check to retrieve the sum of related Meetup_Registration records
+                                                                
+
+Module 8: Test Registration page
+Fields                                  Type                            Test Coverage
+1. Registration number                  Text                            Check for valid number
+                                                                        Check for invalid number
+                                                                        Check for boundary values[Min -Max] [ per user specification]
+2. Email                                Email                           Check for Validity
+                                                                        Check for Required field input from User
+                                                                        Check for unique ID input from User
+3. First_Name                            Text                           Check for valid char [a-z]
+                                                                        Check for invalid char
+                                                                        Check for boundary values
+4. Last_Name                             Text                           Check for valid char [a-z]
+                                                                        Check for invalid char
+                                                                        Check for boundary values
+
+Module 9: Test entire process flow
+Test the entire process from creating admin page and registration page
+MeetUp must be created successfully
+Registration must be created successfully
+
+
+a. Pass /Fail Criteria - All the test cases must be either "pass" or "fail"
+                         If the "actual" values matches the "expected" values then "pass" otherwise "fail"
+b. Suspension Criteria - Testing will be suspended When there is a change request or Errors in input Documentation
+c. Approval Criteria -All the test cases must pass and status of all defects must be closed and percentage of success must be defined
+
+5. Testing Process
+
+Test Deliverables:
+a. Test Cases - All TCs will be maintained and executed in the Qmetry Repository,
+                all activities will be broken down to testable areas and a weight will be assigned
+b. Test Execution Reports - Test execution report will be maintained using KPI tool
+c. Defect Report - All defects will be reported and maintained in JIRA
+
+Test Cases:
+Requirement: The registration page will be accessed by external users with their Registration Code
+
+TCId          Testcase Name                     Description                                                  Test Steps                                                             TestData      Expected     Actual  Result
+TC1           Create Admin Page                 Owner must be able to create Meetup successfully            1. Open Admin UI in the browser
+                                                                                                            2. Enter valid values in all the Fields
+                                                                                                            3. Admin Page created successfully
+TC2           Create Registration Page          User must be able to create registration page successfully  1. Open Registration UI in browsers
+                                                                                                            2. Enter valid values in all the Fields
+                                                                                                            3. Registration page created successfully
+                                                                                                            4. Registration code generated successfully
+TC3           Verify if Registration code       Registration code generated must be unique                  1. Create 10 registrations
+              generation is unique                                                                          2. Verify the code generated is unique
+TC4           Verify if Registration code       Registration code generated must be random/auto             1. Create 10 registrations
+              is random and auto generated                                                                  2. Verify the code generated is random/auto populated
+TC5           Verify if Registration code is    Registration code must be alphanumeric                      1. Create 10 registrations
+              alphanumeric                                                                                  2. Verify if Registration code is alphanumeric
+TC6           Verify if users can enter         Registration code must be entered successfully              1. Enter valid Registration code
+              registration code successfully                                                                2. User must be able to access their registered page
+                                                                                                            3. Repeat 10 times and record results
+                                                                                                            4. All must pass to reord pass for final result else fail
+
+TC7           Verify if user can access their   User must access accurate information, check for            1. Enter valid registration code successfully
+              information accurately after      data accuracy                                               2. User must be able to access their registration page successfully
+              entering the code                                                                             3. Repeat 10 times to record results
+                                                                                                            4. All must pass to record pass for final result else fail
+
+
+Testing Tasks:
+    a. Review of Documentation - Team
+    b. Preparation of Test Cases - Test Lead
+    c. Execution of Test cases - Tester
+    d. Result Analysis based on Actual and expected Tester
+    e. Defect Tracking/Reporting/Closure - Tester
+    f. Status Reports - QA Lead
+
+Schedule
+
+  S.NO | Task |Schedule | Start | End
+
+6. Environment
+
+  Software: Database, windows, Mac, mobile browsers
+
+7. Risks/Contingencies
+    1. Frequent change in request
+    2. Budget
+    3. Identiifying resources
+    4. Not meeting deadline
+
+8. Change Management
+    The requirement changes will be going through the change management process and testing will be suspended when waiting for approval
+9. Plan Approvals
+    This plan will be reviewed and approved by the team
